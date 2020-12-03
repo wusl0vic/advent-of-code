@@ -61,6 +61,9 @@
       </SbtProjectSettings>
     </option>
   </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
   <component name="libraryTable">
     <library name="sbt: org.scala-lang:scala-library:2.13.4:jar" type="Scala">
       <properties>

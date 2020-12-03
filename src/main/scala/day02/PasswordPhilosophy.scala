@@ -8,14 +8,14 @@ import scala.util.{Failure, Success}
 object PasswordPhilosophy extends App {
 
 	val fileName = "day02/input.dat"
-	val input = readInput(fileName) match {
+	implicit val input: List[String] = readInput(fileName) match {
 		case Success(list) => list
 		case Failure(_) => List()
 	}
 
 	val lineRegex = """(\d+)-(\d+) ([a-z]): (.+)""".r
 
-	def countValidPasswords(list: List[String], check: => (Int, Int, Char, String) => Boolean): Int = {
+	def countValidPasswords(check: => (Int, Int, Char, String) => Boolean)(implicit list: List[String]): Int = {
 		var total = 0
 		for (line <- list) {
 			line match {
@@ -26,7 +26,7 @@ object PasswordPhilosophy extends App {
 		total
 	}
 
-	def countValidPasswordsRec(list: List[String], check: => (Int, Int, Char, String) => Boolean): Int = {
+	def countValidPasswordsRec(check: => (Int, Int, Char, String) => Boolean)(implicit list: List[String]): Int = {
 		@tailrec
 		def countValidPasswordsRec(list: List[String], check: => (Int, Int, Char, String) => Boolean, acc: Int): Int = {
 			list match {
@@ -51,10 +51,10 @@ object PasswordPhilosophy extends App {
 		pw(lower - 1) == c ^ pw(upper - 1) == c
 	}
 
-	val x = countValidPasswordsRec(input, check1)
+	val x = countValidPasswordsRec(check1)
 	println(s"1st check: $x valid passwords")
 
-	val y = countValidPasswordsRec(input, check2)
+	val y = countValidPasswordsRec(check2)
 	println(s"2nd check: $y valid passwords")
 
 }
