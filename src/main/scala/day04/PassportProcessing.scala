@@ -34,10 +34,11 @@ object PassportProcessing extends App {
 
 	val heightPattern = """(\d+)(cm|in)""".r
 	def checkHeight(h: String): Boolean = h match {
-		case heightPattern(height, unit) =>
-			if (unit == "cm") height.toInt >= 150 && height.toInt <= 193
-			else if (unit == "in") height.toInt >= 59 && height.toInt <= 76
-			else false
+		case heightPattern(height, unit) => unit match {
+			case "cm" => height.toInt >= 150 && height.toInt <= 193
+			case "in" => height.toInt >= 59 && height.toInt <= 76
+			case _ => false
+		}
 		case _ => false
 	}
 
