@@ -20,6 +20,18 @@ object PassportProcessing extends App {
 		case Failure(_) => List()
 	}
 
-	println(input)
+	val requiredFields = Set("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid")
 
+	def countValidFields(required: Set[String])(implicit input: List[String]): Int = {
+		var valid = 0
+		for (line <- input) {
+			val key = line.split(" ").map(_.trim).toList.map(s => s.split(":")(0)).toSet
+			if (key - "cid" == required)
+				valid += 1
+		}
+		valid
+	}
+
+	val valid = countValidFields(requiredFields - "cid")
+	println(s"there are $valid valid fields")
 }
