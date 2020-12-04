@@ -1,13 +1,13 @@
 package day03
 
-import util.Utils.readInput
+import util.Utils.readInputLines
 
 import scala.Console.{BLUE, RESET, YELLOW}
 import scala.util.{Failure, Success}
 
 object TobogganTrajectory extends App {
 
-	implicit val input: List[String] = readInput("day03/input.dat") match {
+	implicit val input: List[String] = readInputLines("day03/input.dat") match {
 		case Success(list) => list
 		case Failure(_) => List()
 	}

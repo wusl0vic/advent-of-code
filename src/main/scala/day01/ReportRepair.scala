@@ -1,13 +1,13 @@
 package day01
 
-import util.Utils.readInput
+import util.Utils.readInputLines
 
 import scala.util.{Failure, Success}
 
 object ReportRepair extends App {
 
 	val fileName = "day01/input.dat"
-	implicit val input: List[Int] = readInput(fileName) match {
+	implicit val input: List[Int] = readInputLines(fileName) match {
 		case Success(list) => list.map(_.toInt)
 		case Failure(_) => List()
 	}

@@ -1,6 +1,6 @@
 package day02
 
-import util.Utils.readInput
+import util.Utils.readInputLines
 
 import scala.annotation.tailrec
 import scala.util.{Failure, Success}
@@ -8,7 +8,7 @@ import scala.util.{Failure, Success}
 object PasswordPhilosophy extends App {
 
 	val fileName = "day02/input.dat"
-	implicit val input: List[String] = readInput(fileName) match {
+	implicit val input: List[String] = readInputLines(fileName) match {
 		case Success(list) => list
 		case Failure(_) => List()
 	}
