@@ -17,4 +17,10 @@ object Utils {
 		}
 	}
 
+	def readInputString(file: String): Try[String] = {
+		Using(Source.fromResource(file)) { source =>
+			source.mkString
+		}
+	}
+
 }
