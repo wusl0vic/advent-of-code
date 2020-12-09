@@ -2,6 +2,7 @@ package day09
 
 import util.Utils.readInputLines
 
+import scala.Console.{RED, RESET, YELLOW}
 import scala.util.{Failure, Success}
 
 object EncodingError extends App {
@@ -48,8 +49,8 @@ object EncodingError extends App {
 		-1
 	}
 
-	val x = findWeakness(input, 25)
-	println(x)
+	val weakSpot = findWeakness(input, 25)
+	println(s"the weakness in the XMAS data is $RED$weakSpot$RESET")
 
 	def findSubList(input: List[Long], exp: Long): List[Long] = {
 		for (i <- 0 until input.length - 1) {
@@ -63,7 +64,7 @@ object EncodingError extends App {
 		List()
 	}
 
-	val sublist = findSubList(input, 1504371145)
-	println(s"${sublist.min} + ${sublist.max} = ${sublist.min + sublist.max}")
+	val sublist = findSubList(input, weakSpot)
+	println(s"resolving weakness: ${sublist.min} + ${sublist.max} = $YELLOW${sublist.min + sublist.max}$RESET")
 
 }
