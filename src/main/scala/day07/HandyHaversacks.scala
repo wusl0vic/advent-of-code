@@ -81,7 +81,7 @@ object HandyHaversacks extends App {
 				c += col._1 + col._1 * cost(col._2)
 			}
 			c
-		} else{
+		} else {
 			0
 		}
 	}
