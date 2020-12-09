@@ -14,7 +14,7 @@ object HandheldHalting extends App {
 	val instruction = """^(nop|acc|jmp) ([+-])(\d+)$""".r
 
 	def runJmps(): (Int, Int, Boolean) = {
-		val jmps = input.zipWithIndex.filter(e => e._1.startsWith("jmp"))
+		val jmps = input.zipWithIndex.filter(_._1.startsWith("jmp"))
 		var done = false
 		var res: (Int, Int, Boolean) = (-1, -1, false)
 		for (jmp <- jmps if !done) {

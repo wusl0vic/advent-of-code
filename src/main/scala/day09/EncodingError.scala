@@ -51,4 +51,19 @@ object EncodingError extends App {
 	val x = findWeakness(input, 25)
 	println(x)
 
+	def findSubList(input: List[Long], exp: Long): List[Long] = {
+		for (i <- 0 until input.length - 1) {
+			var sum = input(i)
+			for (j <- i + 1 until input.length) {
+				sum += input(j)
+				if (sum == exp)
+					return input.slice(i, j + 1)
+			}
+		}
+		List()
+	}
+
+	val sublist = findSubList(input, 1504371145)
+	println(s"${sublist.min} + ${sublist.max} = ${sublist.min + sublist.max}")
+
 }
